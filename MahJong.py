@@ -1,7 +1,10 @@
 import functools
 
-werteliste={'Pon':2,'Poe':4,'Pvn':4,'Pve':8,'Kon':8,'Koe':16,'Kvn':16,'Kve':32,'TP':2}
-punktestand=[0,0,0,0]
+werteliste={'Pon':2,'Poe':4,'Pvn':4,'Pve':8,
+            'Kon':8,'Koe':16,'Kvn':16,'Kve':32,
+            'TP':2}
+
+
 
 class spieler:
     Pon=0
@@ -14,8 +17,8 @@ class spieler:
     Kve=0
     TP=0
     
-    def __init__(self,name):
-        self.name=name
+    def __init__(self,ident):
+        self.ident=ident
         self.__Gesamt=0
         self.__Saldo=0
         
@@ -27,17 +30,21 @@ class spieler:
 
     def __str__(self):
         return self.name+':'+str(self.__Gesamt)
-        
 
-spielerliste=[spieler('Spieler0'),
-              spieler('Spieler1'),
+spielerliste=[spieler('Spieler1'),
               spieler('Spieler2'),
-              spieler('Spieler3')]
+              spieler('Spieler3'),
+              spieler('Spieler4')]
+
+punkteliste={'Spieler1':0,
+             'Spieler2':0,
+             'Spieler3':0,
+             'Spieler4':0}
+
+
 
 def Update(punktestand):
     return [item.BerechneSumme() for item in spielerliste]
-
-def Setze
 
 
 def RundeAbrechnung(werte,neu):
