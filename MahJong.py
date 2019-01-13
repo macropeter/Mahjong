@@ -22,7 +22,7 @@ class spieler:
     def BerechneSumme(self):
         global punktestand
         hilfliste=[werteliste[k]*getattr(self,k) for k in werteliste]
-        self.Gesamt=functools.reduce(lambda x,y: x+y,hilfliste)
+        self.__Gesamt=functools.reduce(lambda x,y: x+y,hilfliste)
         return self.__Gesamt
 
     def __str__(self):
@@ -34,22 +34,20 @@ spielerliste=[spieler('Spieler0'),
               spieler('Spieler2'),
               spieler('Spieler3')]
 
-def saldoBerechnung(werte,punkte,neu):
+def Update(punktestand):
+    return [item.BerechneSumme() for item in spielerliste]
+
+def Setze
+
+
+def RundeAbrechnung(werte,neu):
+    "Eine Runde abrechnen, wer zahlt wem wieviel"
     zn=[0,0,0,0]
     ins=neu[0]+neu[1]+neu[2]+neu[3]
     zn[0]=ins-4*neu[0]
     zn[1]=ins-4*neu[1]
     zn[2]=ins-4*neu[2]
     zn[3]=ins-4*neu[3]
-       
-    for i in range(4):
-        punkte[i]=punkte[i]+zn[i]
-    
-    return punkte
-
-def NeuerSpielstand():
-    global spielstand
-    spielstand=[sp.__Gesamt for sp in spielerliste]
-    return True
+    return zn
 
 dx=[8,4,14,26]
