@@ -5,7 +5,6 @@ werteliste={'Pon':2,'Poe':4,'Pvn':4,'Pve':8,
             'TP':2}
 
 
-
 class spieler:
     Pon=0
     Poe=0
@@ -23,7 +22,6 @@ class spieler:
         self.__Saldo=0
         
     def BerechneSumme(self):
-        global punktestand
         hilfliste=[werteliste[k]*getattr(self,k) for k in werteliste]
         self.__Gesamt=functools.reduce(lambda x,y: x+y,hilfliste)
         return self.__Gesamt
@@ -41,20 +39,19 @@ punkteliste={'Spieler1':0,
              'Spieler3':0,
              'Spieler4':0}
 
-
+def addiereListen(x,y):
+    return [i+j for i,j in zip(x,y)]
 
 def Update(punktestand):
     return [item.BerechneSumme() for item in spielerliste]
 
 
-def RundeAbrechnung(werte,neu):
+def RundeAbrechnung(neu):
     "Eine Runde abrechnen, wer zahlt wem wieviel"
-    zn=[0,0,0,0]
     ins=neu[0]+neu[1]+neu[2]+neu[3]
-    zn[0]=ins-4*neu[0]
-    zn[1]=ins-4*neu[1]
-    zn[2]=ins-4*neu[2]
-    zn[3]=ins-4*neu[3]
-    return zn
+    return [ins-4*item for item in neu]
 
 dx=[8,4,14,26]
+
+def ZeigePunktestand(spliste):
+    return [item.BerechneSumme() for item in spliste]
